@@ -7,7 +7,7 @@ import retrofit2.http.POST
 
 interface CricketAPI {
 //    @GET("photos")
-//    suspend fun getImages(): Response<ImageModel>
+//    suspend fun getMatchList(): Response<ImageModel>
 //
 //    @POST("photos")
 //    suspend fun postImages(@Body ImageModel : ImageModel): Response<ImageModel>
