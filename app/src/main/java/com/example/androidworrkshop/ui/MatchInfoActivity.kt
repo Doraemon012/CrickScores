@@ -28,8 +28,8 @@ class MatchInfoActivity : AppCompatActivity() {
         if (matchId != null) {
             viewModel.getMatchScore(matchId)
         }else{
-            matchId="75451"
-            viewModel.getMatchScore(matchId)
+//            matchId="75451"
+//            viewModel.getMatchScore(matchId)
         }
 
         setObservers()
