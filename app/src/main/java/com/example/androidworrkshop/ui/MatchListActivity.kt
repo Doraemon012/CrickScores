@@ -85,17 +85,56 @@ class MatchListActivity : AppCompatActivity() {
             }
 
         }
-//        Log.e("llll",matchList.toString())
-        val adapter=MatchAdapter(this,matchList)
 
+        var matchListUpcoming:MutableList<Match> = arrayListOf()
+        var matchListLive:MutableList<Match> = arrayListOf()
+        var matchListPast:MutableList<Match> = arrayListOf()
+
+        for(i in matchList){
+            try {
+                if(i.matchInfo.state=="Complete")matchListPast.add(i)
+                else if(i.matchInfo.state=="Upcoming")matchListUpcoming.add(i)
+                else matchListLive.add(i)
+            }catch (e:Exception){
+                Log.e("error_ll",e.toString())
+            }
+
+
+        }
+//        Log.e("llll",matchListUpcoming.toString())
+        val adapterUp=MatchAdapter(this,matchListUpcoming)
 
         try {
-            val rv =findViewById<RecyclerView>(R.id.rv_upMatches)
-            rv.layoutManager=LinearLayoutManager(this)
-            rv.adapter=adapter
+            val rvUp =findViewById<RecyclerView>(R.id.rv_upMatches)
+            rvUp.layoutManager=LinearLayoutManager(this)
+            rvUp.adapter=adapterUp
         }catch (e:Exception){
             Log.e("error",e.toString())
         }
+
+
+
+        val adapterLive=MatchAdapter(this,matchListLive)
+
+        try {
+            val rvLive =findViewById<RecyclerView>(R.id.rv_liveMatches)
+            rvLive.layoutManager=LinearLayoutManager(this)
+            rvLive.adapter=adapterLive
+        }catch (e:Exception){
+            Log.e("error",e.toString())
+        }
+
+
+        val adapterPast=MatchAdapter(this,matchListPast)
+
+        try {
+            val rvLive =findViewById<RecyclerView>(R.id.rv_pastMatches)
+            rvLive.layoutManager=LinearLayoutManager(this)
+            rvLive.adapter=adapterPast
+        }catch (e:Exception){
+            Log.e("error",e.toString())
+        }
+
 
         Log.e("lele","lele")
     }
