@@ -4,13 +4,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.AdapterView
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.androidworrkshop.R
 import com.example.androidworrkshop.databinding.ActivityMatchListBinding
 import com.example.androidworrkshop.di.Resource
 import com.example.androidworrkshop.model.Match
+import com.example.androidworrkshop.model.MatchDetail
+import com.example.androidworrkshop.model.MatchDetailsMap
 import com.example.androidworrkshop.model.MatchInfo
 import com.example.androidworrkshop.model.MatchInfoX
 import dagger.hilt.android.AndroidEntryPoint
@@ -66,14 +71,33 @@ class MatchListActivity : AppCompatActivity() {
     }
 
     fun SetUpRecyclerView(){
-        var x=0
-        var matchList:MutableList<MatchInfoX> = arrayListOf()
-        Log.e("kkkk",MatchInfo.toString())
-        MatchInfo?.matchDetails?.forEach{
-//            for((key,match) in it.matchDetailsMap)
-            Log.e("llll",it.matchDetailsMap.toString())
+        var matchList:MutableList<Match> = arrayListOf()
+//        Log.e("kkkk",MatchInfo.toString())
+        val list=MatchInfo?.matchDetails
+
+        for(i in 0..MatchInfo?.matchDetails?.size!!-1){
+//            Log.e("num",i.toString())
+            try {
+//                Log.e("laaa", MatchInfo?.matchDetails!![i].matchDetailsMap.match[0].toString())
+                matchList.add(MatchInfo?.matchDetails!![i].matchDetailsMap.match[0])
+            }catch (e:Exception){
+                Log.e("error",e.toString())
+            }
+
         }
-//        var adapter=MatchAdapter(this,)
+//        Log.e("llll",matchList.toString())
+        val adapter=MatchAdapter(this,matchList)
+
+
+        try {
+            val rv =findViewById<RecyclerView>(R.id.rv_upMatches)
+            rv.layoutManager=LinearLayoutManager(this)
+            rv.adapter=adapter
+        }catch (e:Exception){
+            Log.e("error",e.toString())
+        }
+
+        Log.e("lele","lele")
     }
 
 }
