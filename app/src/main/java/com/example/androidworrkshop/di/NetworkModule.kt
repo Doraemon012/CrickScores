@@ -1,15 +1,20 @@
 package com.example.androidworrkshop.di
 
+import com.example.androidworrkshop.repo.CricketAPI
+import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Inject
 import javax.inject.Singleton
 
+@Module
 class NetworkModule {
 
-
+    @Singleton
+    @Provides
     fun provideRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(Constants.BASE_URL)
@@ -17,7 +22,8 @@ class NetworkModule {
             .build()
     }
 
-    private fun provideOkHttpClient() : OkHttpClient {
+    @Provides
+    private fun provideOkHttpClient () : OkHttpClient {
         val builder = OkHttpClient()
             .newBuilder()
 
@@ -27,10 +33,10 @@ class NetworkModule {
         return builder.build()
     }
 
-//    @Singleton
-//    @Provides
-//    fun providesSevayuAPI(retrofit: Retrofit): ImageAPI {
-//        return retrofit.create(ImageAPI::class.java)
-//    }
+    @Singleton
+    @Provides
+    fun providesSevayuAPI(retrofit: Retrofit): CricketAPI {
+        return retrofit.create(CricketAPI::class.java)
+    }
 
 }

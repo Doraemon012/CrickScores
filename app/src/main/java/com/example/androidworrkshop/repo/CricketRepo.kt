@@ -1,4 +1,9 @@
 package com.example.androidworrkshop.repo
 
-class CricketRepo {
+import javax.inject.Inject
+
+class CricketRepo @Inject constructor(private val CricketAPI: CricketAPI) {
+
+    suspend fun getMatchList() =CricketAPI.getMatchList()
+
 }
