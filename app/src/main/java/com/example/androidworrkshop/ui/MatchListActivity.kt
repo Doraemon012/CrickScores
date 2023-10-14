@@ -10,8 +10,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.androidworrkshop.R
 import com.example.androidworrkshop.databinding.ActivityMatchListBinding
 import com.example.androidworrkshop.di.Resource
+import com.example.androidworrkshop.model.Match
 import com.example.androidworrkshop.model.MatchInfo
+import com.example.androidworrkshop.model.MatchInfoX
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MatchListActivity : AppCompatActivity() {
 
     lateinit var binding : ActivityMatchListBinding
@@ -45,19 +49,31 @@ class MatchListActivity : AppCompatActivity() {
 //                    binding.progressBar.visibility = View.GONE
 //                    binding.emptyDialog.visibility = View.GONE
 //                    ImageList = it.data
-//                    setUpRecyclerView()
                     Log.e("Result",it.data.toString())
+                    MatchInfo=it.data
+                    SetUpRecyclerView()
                 }
                 Resource.Status.ERROR -> {
-                    Log.e("setObservers", "Error")
+                    Log.e("setObservers", it.error.toString())
 //                    binding.progressBar.visibility = View.GONE
 //                    binding.emptyDialog.visibility = View.VISIBLE
-                    Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, it.error.toString(), Toast.LENGTH_SHORT).show()
                 }
 
                 else -> {}
             }
         })
+    }
+
+    fun SetUpRecyclerView(){
+        var x=0
+        var matchList:MutableList<MatchInfoX> = arrayListOf()
+        Log.e("kkkk",MatchInfo.toString())
+        MatchInfo?.matchDetails?.forEach{
+//            for((key,match) in it.matchDetailsMap)
+            Log.e("llll",it.matchDetailsMap.toString())
+        }
+//        var adapter=MatchAdapter(this,)
     }
 
 }
