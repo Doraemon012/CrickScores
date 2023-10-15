@@ -22,7 +22,7 @@ class MainViewModel @Inject constructor(private val CricketRepo: CricketRepo) : 
         get() = performFetchMatches
 
 
-    fun getShops() {
+    fun getMatches() {
         viewModelScope.launch {
             try {
                 performFetchMatches.value = Resource.loading()

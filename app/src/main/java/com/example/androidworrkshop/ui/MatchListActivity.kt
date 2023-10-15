@@ -32,7 +32,7 @@ class MatchListActivity : AppCompatActivity() {
 
         viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
-        viewModel.getShops()
+        viewModel.getMatches()
 
         setObservers()
     }
@@ -78,7 +78,7 @@ class MatchListActivity : AppCompatActivity() {
         for(i in 0..MatchInfo?.matchDetails?.size!!-1){
 //            Log.e("num",i.toString())
             try {
-//                Log.e("laaa", MatchInfo?.matchDetails!![i].matchDetailsMap.match[0].toString())
+//                Log.e("Match", MatchInfo?.matchDetails!![i].matchDetailsMap.match[0].toString())
                 matchList.add(MatchInfo?.matchDetails!![i].matchDetailsMap.match[0])
             }catch (e:Exception){
                 Log.e("error",e.toString())
@@ -101,7 +101,7 @@ class MatchListActivity : AppCompatActivity() {
 
 
         }
-//        Log.e("llll",matchListUpcoming.toString())
+//        Log.e("Match Upcoming",matchListUpcoming.toString())
         val adapterUp=MatchAdapter(this,matchListUpcoming)
 
         try {
@@ -136,7 +136,7 @@ class MatchListActivity : AppCompatActivity() {
         }
 
 
-        Log.e("lele","lele")
+        Log.e("Done","Done")
     }
 
 }
