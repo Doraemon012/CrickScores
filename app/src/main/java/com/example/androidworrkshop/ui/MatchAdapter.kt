@@ -56,6 +56,7 @@ class MatchAdapter(private val context: Context, private val MatchDetails : Muta
                Toast.makeText(context, "No Scorecard available", Toast.LENGTH_SHORT).show()
            }
        }
+
     }
 
 }
