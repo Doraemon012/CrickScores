@@ -25,15 +25,17 @@ class NetworkModule {
             .build()
     }
 
-    private fun provideOkHttpClient () : OkHttpClient {
-        val builder = OkHttpClient()
-            .newBuilder()
-
-        val requestInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
-        builder.addNetworkInterceptor(requestInterceptor)
-
-        return builder.build()
-    }
+//    @Singleton
+//    @Provides
+//    private fun provideOkHttpClient () : OkHttpClient {
+//        val builder = OkHttpClient()
+//            .newBuilder()
+//
+//        val requestInterceptor = HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY)
+//        builder.addNetworkInterceptor(requestInterceptor)
+//
+//        return builder.build()
+//    }
 
     @Singleton
     @Provides
