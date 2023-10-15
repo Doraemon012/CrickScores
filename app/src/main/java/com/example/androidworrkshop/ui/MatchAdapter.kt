@@ -15,8 +15,9 @@ import com.example.androidworrkshop.model.Match
 class MatchAdapter(private val context: Context, private val MatchDetails : List<Match>, private val listener : OnItemClickListener) : RecyclerView.Adapter<MatchAdapter.ViewHolder>() {
 
     class ViewHolder(binding: ItemMatchBinding) : RecyclerView.ViewHolder(binding.root){
-        val Team1 = binding.cvTeam1
-        val Team2 = binding.cvTeam2
+//        val Team1 = binding.cvTeam1
+//        val Team2 = binding.cvTeam2
+        val Team = binding.team
         val time = binding.cvTime
         val location = binding.location
     }
@@ -35,8 +36,9 @@ class MatchAdapter(private val context: Context, private val MatchDetails : List
 
     override fun onBindViewHolder(holder: MatchAdapter.ViewHolder, position: Int) {
        val model = MatchDetails[position]
-        holder.Team1.text = model.matchInfo.team1.teamName
-        holder.Team2.text = model.matchInfo.team2.teamName
+        holder.Team.text = model.matchInfo.team1.teamName + model.matchInfo.team2.teamName
+//        holder.Team1.text = model.matchInfo.team1.teamName
+//        holder.Team2.text = model.matchInfo.team2.teamName
         holder.time.text = model.matchInfo.status
         holder.location.text = model.matchInfo.venueInfo.city
     }

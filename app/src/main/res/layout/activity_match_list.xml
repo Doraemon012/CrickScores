@@ -4,82 +4,66 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.MatchListActivity">
+    tools:context=".ui.MatchInfoActivity"
+    android:orientation="vertical">
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/tb_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="#2196F3"
         app:title="ICC WORLD CUP"
-        app:titleTextColor="@color/white"
-        />
+        app:titleTextColor="@color/white"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_gravity="top"
-        android:background="@color/black"
-        />
 
     <TextView
-        android:id="@+id/tv_upcomming"
+        android:id="@+id/tv_coming"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Upcomming Matches"
-        android:visibility="visible"
         android:padding="16dp"
-        android:textSize="24sp"
         android:paddingBottom="8dp"
-        />
+        android:text="Upcoming Matches"
+        android:textSize="24dp"
+        android:visibility="visible" />
 
     <androidx.recyclerview.widget.RecyclerView
+
         android:id="@+id/rv_upMatches"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="16dp"
-        />
+        tools:listitem="@layout/item_match" />
 
     <TextView
-        android:id="@+id/tv_live"
+        android:id="@+id/live_coming"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:paddingBottom="8dp"
         android:text="Live Matches"
-        android:visibility="visible"
-        android:padding="16dp"
-        android:textSize="24sp"
-        android:paddingBottom="8dp"
-        />
-
+        android:textSize="24dp"
+        android:visibility="visible" />
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
         android:id="@+id/rv_liveMatches"
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingBottom="16dp"
-        />
-
+        tools:listitem="@layout/item_match"
+        android:paddingBottom="16dp"/>
     <TextView
-        android:id="@+id/tv_past"
+        android:id="@+id/past_coming"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Past Matches"
-        android:visibility="visible"
         android:padding="16dp"
-        android:textSize="24sp"
         android:paddingBottom="8dp"
-        />
-
+        android:text="Past Matches"
+        android:textSize="24dp"
+        android:visibility="visible" />
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_pastMatches"
         android:layout_width="match_parent"
+        android:id="@+id/rv_pastMatches"
+        tools:listitem="@layout/item_match"
         android:layout_height="wrap_content"
-        android:paddingBottom="16dp"
-        />
+        android:paddingBottom="16dp"/>
 
-
-
-
-
-
+    <!--TODO:-->
+    <!--    view /view-->
 
 </LinearLayout>
